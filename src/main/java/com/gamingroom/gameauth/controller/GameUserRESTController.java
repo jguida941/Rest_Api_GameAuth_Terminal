@@ -37,14 +37,14 @@ public class GameUserRESTController {
         this.validator = validator;
     }
  
-    @PermitAll
+    @RolesAllowed({"USER", "ADMIN"}) // Only USER and ADMIN can see all users
     @GET
     public Response getGameUsers(@Auth GameUser user) {
         return Response.ok(GameUserDB.getGameUsers()).build();
     }
  
-    // FIXED: Add RolesAllowed annotation for USER based on BasicAuth Security Example 
-    @RolesAllowed("USER") // User role is allowed to access the resource
+    // FIXED: Add RolesAllowed annotation for USER and ADMIN only - GUEST and PLAYER get 403
+    @RolesAllowed({"USER", "ADMIN"}) // Only USER and ADMIN roles can access individual user details
     @GET
     @Path("/{id}")
     public Response getGameUserById(@PathParam("id") Integer id,@Auth GameUser user) {
@@ -83,9 +83,10 @@ public class GameUserRESTController {
             return Response.status(Status.NOT_FOUND).build();
     }
  
+    @RolesAllowed({"USER", "ADMIN"}) // Only USER and ADMIN can update users
     @PUT
     @Path("/{id}")
-    public Response updateGameUserById(@PathParam("id") Integer id, GameUserInfo gameUserInfo) {
+    public Response updateGameUserById(@PathParam("id") Integer id, GameUserInfo gameUserInfo, @Auth GameUser user) {
         // validation
         Set<ConstraintViolation<GameUserInfo>> violations = validator.validate(gameUserInfo);
         GameUserInfo e = GameUserDB.getGameUser(gameUserInfo.getId());
@@ -104,9 +105,10 @@ public class GameUserRESTController {
             return Response.status(Status.NOT_FOUND).build();
     }
  
+    @RolesAllowed("ADMIN") // Only ADMIN can delete users
     @DELETE
     @Path("/{id}")
-    public Response removeGameUserById(@PathParam("id") Integer id) {
+    public Response removeGameUserById(@PathParam("id") Integer id, @Auth GameUser user) {
         GameUserInfo gameUserInfo = GameUserDB.getGameUser(id);
         if (gameUserInfo != null) {
             GameUserDB.removeGameUser(id);
