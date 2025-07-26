@@ -3,9 +3,34 @@ import os
 import subprocess
 import time
 import sys
+import re
 
 # Change to the script's directory
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+# Helper functions for box drawing
+def visible_length(text):
+    """Calculate the visible length of text, excluding ANSI escape sequences"""
+    ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+    return len(ansi_escape.sub('', text))
+
+def print_box_line(content, width=60, border_color="\033[38;5;196m"):
+    """Print a line with borders, ensuring consistent width"""
+    # Calculate visible length of content
+    visible_len = visible_length(content)
+    # Calculate needed padding
+    padding_needed = width - visible_len
+    # Print with proper padding
+    print(f"{border_color}║\033[0m{content}{' ' * padding_needed}{border_color}║\033[0m")
+
+def print_horizontal_border(char='═', width=60, border_color="\033[38;5;196m"):
+    """Print horizontal border with consistent width"""
+    if char == '═':
+        print(f"{border_color}╠{'═' * width}╣\033[0m")
+    elif char == 'top':
+        print(f"{border_color}╔{'═' * width}╗\033[0m")
+    elif char == 'bottom':
+        print(f"{border_color}╚{'═' * width}╝\033[0m")
 
 # Clear the screen for better visibility
 os.system('clear' if os.name == 'posix' else 'cls')
@@ -39,41 +64,42 @@ for i in range(20):
 
 print("\r\033[38;5;46m✓\033[0m \033[38;5;46m████████████\033[0m \033[38;5;46m100%\033[0m Server Connected!                    ")
 
-# Instructions with glowing red borders to match GAMEAUTH
-print("\n\033[38;5;196m╔════════════════════════════════════════════════════════════╗\033[0m")
-print("\033[38;5;196m║\033[0m                    \033[38;5;208mLogin Instructions\033[0m                     \033[38;5;196m║\033[0m")
-print("\033[38;5;196m╠════════════════════════════════════════════════════════════╣\033[0m")
-print("\033[38;5;196m║\033[0m                                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[97mSimply:\033[0m                                                  \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Paste into browser: \033[93mlocalhost:8080\033[0m                     \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Use provided logins below to test the system           \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Test API endpoints and manage user data                \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m                                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m╠════════════════════════════════════════════════════════════╣\033[0m")
-print("\033[38;5;196m║\033[0m                   \033[38;5;208mLogin Credentials\033[0m                       \033[38;5;196m║\033[0m")
-print("\033[38;5;196m╠════════════════════════════════════════════════════════════╣\033[0m")
-print("\033[38;5;196m║\033[0m                                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[91mADMIN ACCESS:\033[0m                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Username: \033[91madmin\033[0m    \033[38;5;208m▸\033[0m Password: \033[91mpassword\033[0m                      \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m                                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[92mUSER ACCESS:\033[0m                                             \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Username: \033[92muser\033[0m     \033[38;5;208m▸\033[0m Password: \033[92mpassword\033[0m                      \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m                                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[94mPLAYER ACCESS:\033[0m                                           \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Username: \033[94mplayer\033[0m   \033[38;5;208m▸\033[0m Password: \033[94mpassword\033[0m                      \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m                                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[95mGUEST ACCESS:\033[0m                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Username: \033[95mguest\033[0m    \033[38;5;208m▸\033[0m Password: \033[95mpassword\033[0m                      \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m                                                            \033[38;5;196m║\033[0m")
-print("\033[38;5;196m╠════════════════════════════════════════════════════════════╣\033[0m")
-print("\033[38;5;196m║\033[0m                    \033[38;5;208mAPI Endpoints\033[0m                          \033[38;5;196m║\033[0m")
-print("\033[38;5;196m╠════════════════════════════════════════════════════════════╣\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Main Login Page: \033[93mhttp://localhost:8080/gameusers\033[0m               \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Status Check: \033[93mhttp://localhost:8080/status\033[0m                     \033[38;5;196m║\033[0m")
-print("\033[38;5;196m║\033[0m  \033[38;5;208m▸\033[0m Health Monitor: \033[93mhttp://localhost:8081/healthcheck\033[0m              \033[38;5;196m║\033[0m")
-print("\033[38;5;196m╠════════════════════════════════════════════════════════════╣\033[0m")
-print("\033[38;5;196m║\033[0m         Press \033[91mCtrl+C\033[0m to terminate server connection        \033[38;5;196m║\033[0m")
-print("\033[38;5;196m╚════════════════════════════════════════════════════════════╝\033[0m")
+# Instructions with glowing red borders
+print()
+print_horizontal_border('top')
+print_box_line(f"                    \033[38;5;208mLogin Instructions\033[0m                     ")
+print_horizontal_border('═')
+print_box_line("")
+print_box_line(f"  \033[97mSimply:\033[0m                                                  ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Paste into browser: \033[93mlocalhost:8080\033[0m                     ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Use provided logins below to test the system           ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Test API endpoints and manage user data                ")
+print_box_line("")
+print_horizontal_border('═')
+print_box_line(f"                   \033[38;5;208mLogin Credentials\033[0m                       ")
+print_horizontal_border('═')
+print_box_line("")
+print_box_line(f"  \033[91mADMIN ACCESS:\033[0m                                            ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Username: \033[91madmin\033[0m    \033[38;5;208m▸\033[0m Password: \033[91mpassword\033[0m               ")
+print_box_line("")
+print_box_line(f"  \033[92mUSER ACCESS:\033[0m                                             ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Username: \033[92muser\033[0m     \033[38;5;208m▸\033[0m Password: \033[92mpassword\033[0m               ")
+print_box_line("")
+print_box_line(f"  \033[94mPLAYER ACCESS:\033[0m                                           ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Username: \033[94mplayer\033[0m   \033[38;5;208m▸\033[0m Password: \033[94mpassword\033[0m               ")
+print_box_line("")
+print_box_line(f"  \033[95mGUEST ACCESS:\033[0m                                            ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Username: \033[95mguest\033[0m    \033[38;5;208m▸\033[0m Password: \033[95mpassword\033[0m               ")
+print_box_line("")
+print_horizontal_border('═')
+print_box_line(f"                    \033[38;5;208mAPI Endpoints\033[0m                          ")
+print_horizontal_border('═')
+print_box_line(f"  \033[38;5;208m▸\033[0m Main Login Page: \033[93mhttp://localhost:8080/gameusers\033[0m      ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Status Check: \033[93mhttp://localhost:8080/status\033[0m          ")
+print_box_line(f"  \033[38;5;208m▸\033[0m Health Monitor: \033[93mhttp://localhost:8081/healthcheck\033[0m   ")
+print_horizontal_border('═')
+print_box_line(f"         Press \033[91mCtrl+C\033[0m to terminate server connection        ")
+print_horizontal_border('bottom')
 
 print("\n\033[38;5;208m╔════════════════════════════════════════════════════════════╗\033[0m")
 print("\033[38;5;208m║           LAUNCHING AUTHENTICATION SERVER                  ║\033[0m")
