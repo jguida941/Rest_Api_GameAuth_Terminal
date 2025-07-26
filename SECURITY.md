@@ -15,7 +15,7 @@ This document outlines the security permissions for each role in the GameAuth sy
 
 | Endpoint | Method | ADMIN | USER | PLAYER | GUEST | Description |
 |----------|--------|-------|------|--------|-------|-------------|
-| `/gameusers` | GET | ✅ | ✅ | ❌ | ❌ | List all users |
+| `/gameusers` | GET | ✅ | ✅ | ✅ | ✅ | List all users |
 | `/gameusers/{id}` | GET | ✅ | ✅ | ❌ | ❌ | Get specific user |
 | `/gameusers` | POST | ✅ | ❌ | ❌ | ❌ | Create new user |
 | `/gameusers/{id}` | PUT | ✅ | ✅ | ❌ | ❌ | Update user |
@@ -26,10 +26,7 @@ This document outlines the security permissions for each role in the GameAuth sy
 ### Expected Behavior
 
 #### For GUEST and PLAYER roles:
-- Attempting to access `/gameusers` returns:
-  ```json
-  {"code":403,"message":"User not authorized."}
-  ```
+- Can successfully access `/gameusers` and see the full user list
 - Attempting to access `/gameusers/{id}` returns:
   ```json
   {"code":403,"message":"User not authorized."}
