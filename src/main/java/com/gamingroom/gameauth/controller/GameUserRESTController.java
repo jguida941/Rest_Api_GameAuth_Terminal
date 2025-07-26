@@ -37,7 +37,7 @@ public class GameUserRESTController {
         this.validator = validator;
     }
  
-    @RolesAllowed({"USER", "ADMIN"}) // Only USER and ADMIN can see all users
+    @PermitAll // All authenticated users can see the list
     @GET
     public Response getGameUsers(@Auth GameUser user) {
         return Response.ok(GameUserDB.getGameUsers()).build();

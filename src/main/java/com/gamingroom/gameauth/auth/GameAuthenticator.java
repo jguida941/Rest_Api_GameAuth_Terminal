@@ -17,7 +17,7 @@ public class GameAuthenticator implements Authenticator<BasicCredentials, GameUs
 		
 	private static final Map<String, Set<String>> VALID_USERS = ImmutableMap.of(
         "guest", ImmutableSet.of(),
-        "player", ImmutableSet.of("USER"),
+        "player", ImmutableSet.of("PLAYER"),
         "user", ImmutableSet.of("USER"),
         "admin", ImmutableSet.of("ADMIN", "USER")
     );
