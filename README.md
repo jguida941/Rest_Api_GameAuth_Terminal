@@ -1,46 +1,33 @@
-# 🎮 GameAuth REST API
-
-<div align="center">
-
+# GameAuth REST API
 ![Java](https://img.shields.io/badge/Java-8+-orange.svg)
 ![Dropwizard](https://img.shields.io/badge/Dropwizard-2.0.18-blue.svg)
 ![Maven](https://img.shields.io/badge/Maven-3.6+-red.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
+<br>
+**This is one of many versions I built of GameAuth a Rest API!**
+
+
+
+
 
 **A secure, scalable REST API for game authentication and user management**
 
-[Features](#-features) • [Quick Start](#-quick-start) • [Architecture](#-architecture) • [API Documentation](#-api-documentation) • [Design Choices](#-design-choices)
 
-</div>
 
----
 
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Quick Start](#-quick-start)
-- [System Architecture](#-system-architecture)
-- [Design Choices](#-design-choices)
-- [API Documentation](#-api-documentation)
-- [Terminal UI Design](#-terminal-ui-design)
-- [Security](#-security)
-- [Development](#-development)
-- [Troubleshooting](#-troubleshooting)
-
-## 🎯 Overview
+## Overview
 
 GameAuth is a production-ready REST API built with Dropwizard framework, designed to handle authentication and user management for gaming applications. The project emphasizes security, scalability, and developer experience through a beautifully crafted terminal UI and straightforward deployment process.
 
 ### Why GameAuth?
 
-- **🔐 Secure by Design**: Role-based access control with HTTP Basic Authentication
-- **⚡ High Performance**: Built on Dropwizard's proven architecture
-- **🎨 Beautiful Terminal UI**: Custom-designed neon-themed interface for enhanced developer experience
-- **📦 Easy Deployment**: One-click startup with automatic browser launch
-- **🔧 Developer Friendly**: Clear documentation, intuitive API design, and helpful error messages
+- **Secure by Design**: Role-based access control with HTTP Basic Authentication
+- **High Performance**: Built on Dropwizard's proven architecture
+- **Beautiful Terminal UI**: Custom-designed neon-themed interface for enhanced developer experience
+- **Easy Deployment**: One-click startup with automatic browser launch
+- **Developer Friendly**: Clear documentation, intuitive API design, and helpful error messages
 
-## ✨ Features
+## Features
 
 ### Core Functionality
 - **Multi-tier User Authentication**: Admin, User, Player, and Guest roles
@@ -49,12 +36,12 @@ GameAuth is a production-ready REST API built with Dropwizard framework, designe
 - **Automatic Configuration**: Zero-config startup with sensible defaults
 
 ### Developer Experience
-- **🚀 One-Click Launch**: Double-click `START_SERVER.command` to start
-- **🎨 Neon Terminal UI**: Cyberpunk-inspired interface with loading animations
-- **📊 Real-time Feedback**: Live server status and connection monitoring
-- **🔍 Auto-Browser Launch**: Automatically opens the API in your default browser
+- **One-Click Launch**: Double-click `START_SERVER.command` to start
+- **Neon Terminal UI**: Cyberpunk-inspired interface with loading animations
+- **Real-time Feedback**: Live server status and connection monitoring
+- **Auto-Browser Launch**: Automatically opens the API in your default browser
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 ```bash
@@ -91,7 +78,7 @@ mvn clean package
 python3 run_server.py
 ```
 
-### 🔑 Login Credentials
+### Login Credentials
 
 | Role | Username | Password | Permissions |
 |------|----------|----------|-------------|
@@ -100,7 +87,7 @@ python3 run_server.py
 | **Player** | `player` | `password` | Read only |
 | **Guest** | `guest` | `password` | Limited read |
 
-## 🏗 System Architecture
+## System Architecture
 
 ### High-Level Architecture Flow
 
@@ -114,7 +101,6 @@ python3 run_server.py
          │                        │                        │
          │                        ▼                        │
          │              ┌──────────────────┐               │
-         │              │                  │               │
          └─────────────▶│  Auth Layer      │◀──────────────┘
                         │  (Basic Auth)    │
                         │                  │
@@ -179,29 +165,29 @@ Client Request
 └─────────────────────────────────────────────┘
 ```
 
-## 🎨 Design Choices
+## Design Choices
 
-### 1. **Dropwizard Framework**
+### 1. Dropwizard Framework
 - **Why**: Production-ready, combines best-of-breed Java libraries
 - **Benefits**: Built-in metrics, health checks, and configuration management
 - **Alternative Considered**: Spring Boot (too heavyweight for this use case)
 
-### 2. **HTTP Basic Authentication**
+### 2. HTTP Basic Authentication
 - **Why**: Simple, secure over HTTPS, browser-native support
 - **Benefits**: No custom login page needed, works with all HTTP clients
 - **Trade-off**: Less flexibility in UI customization
 
-### 3. **In-Memory Database**
+### 3. In-Memory Database
 - **Why**: Simplicity for demo/development purposes
 - **Benefits**: Zero configuration, fast performance, no external dependencies
 - **Future**: Easy to swap with PostgreSQL/MySQL for production
 
-### 4. **Neon Terminal UI Design**
+### 4. Neon Terminal UI Design
 - **Why**: Enhanced developer experience, clear visual feedback
 - **Implementation**: ANSI escape codes for colors and animations
 - **Benefits**: Makes server startup engaging and informative
 
-### 5. **Python Launcher Script**
+### 5. Python Launcher Script
 - **Why**: Cross-platform compatibility, better UX than raw Java commands
 - **Features**: 
   - Auto-detects Java installation
@@ -209,7 +195,7 @@ Client Request
   - Shows all login credentials upfront
   - Handles graceful shutdown
 
-## 📡 API Documentation
+## API Documentation
 
 ### Base URLs
 - **Main API**: `http://localhost:8080`
@@ -217,7 +203,7 @@ Client Request
 
 ### Endpoints
 
-#### 1. **List All Users**
+#### 1. List All Users
 ```http
 GET /gameusers
 Authorization: Basic <credentials>
@@ -233,7 +219,7 @@ Response: 200 OK
 ]
 ```
 
-#### 2. **Get Specific User**
+#### 2. Get Specific User
 ```http
 GET /gameusers/{id}
 Authorization: Basic <credentials>
@@ -246,7 +232,7 @@ Response: 200 OK
 }
 ```
 
-#### 3. **Create New User** (Admin only)
+#### 3. Create New User (Admin only)
 ```http
 POST /gameusers
 Authorization: Basic <admin_credentials>
@@ -261,7 +247,7 @@ Content-Type: application/json
 Response: 201 Created
 ```
 
-#### 4. **Update User** (Admin/User)
+#### 4. Update User (Admin/User)
 ```http
 PUT /gameusers/{id}
 Authorization: Basic <credentials>
@@ -275,7 +261,7 @@ Content-Type: application/json
 Response: 200 OK
 ```
 
-#### 5. **Delete User** (Admin only)
+#### 5. Delete User (Admin only)
 ```http
 DELETE /gameusers/{id}
 Authorization: Basic <admin_credentials>
@@ -283,7 +269,7 @@ Authorization: Basic <admin_credentials>
 Response: 204 No Content
 ```
 
-#### 6. **Health Check**
+#### 6. Health Check
 ```http
 GET /healthcheck
 
@@ -294,7 +280,7 @@ Response: 200 OK
 }
 ```
 
-#### 7. **API Status**
+#### 7. API Status
 ```http
 GET /status
 
@@ -328,17 +314,17 @@ Response: 200 OK
 }
 ```
 
-## 🖥 Terminal UI Design
+## Terminal UI Design
 
 ### Design Philosophy
 The terminal UI uses a cyberpunk/gaming aesthetic with neon colors to create an engaging developer experience.
 
 ### Color Palette
-- **Primary**: Neon Orange (`#FF6B35`)
-- **Secondary**: Bright Red (`#FF0000`)
-- **Accent**: Yellow (`#FFD700`)
-- **Success**: Bright Green (`#00FF00`)
-- **Info**: Cyan (`#00FFFF`)
+- **Primary**: Neon Orange (#FF6B35)
+- **Secondary**: Bright Red (#FF0000)
+- **Accent**: Yellow (#FFD700)
+- **Success**: Bright Green (#00FF00)
+- **Info**: Cyan (#00FFFF)
 
 ### UI Components
 
@@ -361,7 +347,7 @@ loading_chars = ["◐", "◓", "◑", "◒"]
 [████████░░░░] 67% LOADING...
 ```
 
-## 🔐 Security
+## Security
 
 ### Current Implementation
 1. **HTTP Basic Authentication**: All endpoints require authentication
@@ -376,7 +362,7 @@ loading_chars = ["◐", "◓", "◑", "◒"]
 4. **Rate Limiting**: Prevent brute force attacks
 5. **Audit Logging**: Track all authentication attempts
 
-## 🔧 Development
+## Development
 
 ### Project Structure
 ```
@@ -432,7 +418,7 @@ Edit `run_server.py` to change:
 - Layout: Adjust print statements
 - Animations: Change timing or characters
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues & Solutions
 
@@ -460,25 +446,19 @@ tail -f server.log
 watch -n 1 'curl -s http://localhost:8081/healthcheck | jq'
 ```
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📞 Support
+## Support
 
 For issues, questions, or contributions:
 - Open an issue on GitHub
 - Check existing documentation
 - Review the troubleshooting guide
-
+- This is one of many versions. I still need to double check everything.
+- If you need help email me at justin.guida@snhu.edu
 ---
 
 <div align="center">
