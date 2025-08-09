@@ -1,4 +1,4 @@
-# 🔐 GameAuth Security Documentation
+# GameAuth Security Documentation
 
 ## Authorization Matrix
 
@@ -53,7 +53,7 @@ This document outlines the security permissions for each role in the GameAuth sy
 - Each endpoint explicitly declares required roles
 
 ### Password Security
-- **Current**: Plaintext (demo only) ⚠️
+- **Current**: Plaintext (demo only) 
 - **Future**: bcrypt hashing with salt
 
 ## Common Security Issues
@@ -79,14 +79,14 @@ curl -X DELETE -u admin:password http://localhost:8080/gameusers/1
 ```
 
 ### Test Matrix:
-1. **GUEST** → `/gameusers` → 403 Forbidden ✅
-2. **GUEST** → `/gameusers/1` → 403 Forbidden ✅
-3. **PLAYER** → `/gameusers` → 403 Forbidden ✅
-4. **PLAYER** → `/gameusers/1` → 403 Forbidden ✅
-5. **USER** → `/gameusers` → 200 OK ✅
-6. **USER** → `/gameusers/1` → 200 OK ✅
-7. **USER** → DELETE `/gameusers/1` → 403 Forbidden ✅
-8. **ADMIN** → All endpoints → 200 OK ✅
+1. **GUEST** → `/gameusers` → 403 Forbidden 
+2. **GUEST** → `/gameusers/1` → 403 Forbidden 
+3. **PLAYER** → `/gameusers` → 403 Forbidden 
+4. **PLAYER** → `/gameusers/1` → 403 Forbidden 
+5. **USER** → `/gameusers` → 200 OK 
+6. **USER** → `/gameusers/1` → 200 OK 
+7. **USER** → DELETE `/gameusers/1` → 403 Forbidden 
+8. **ADMIN** → All endpoints → 200 OK 
 
 ## Future Security Enhancements
 
@@ -113,4 +113,5 @@ curl -X DELETE -u admin:password http://localhost:8080/gameusers/1
 ---
 
 **Last Updated**: July 2025
-**Security Contact**: security@gameauth.example.com
+
+**Security Contact**: justin.guida@snhu.edu
