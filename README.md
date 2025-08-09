@@ -4,13 +4,17 @@
 ![Maven](https://img.shields.io/badge/Maven-3.6+-red.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 <br>
-**This is one of many versions I built of GameAuth a Rest API!**
-
-
-
-
-
 **A secure, scalable REST API for game authentication and user management**
+
+**I am still building this. This is not a release, look at the roadmap if you'd like to contribute!**
+<br>
+**Still need to unit test completly but I have many projects I am working on!**
+<br>
+**Any quesitons email me at justin.guida@snhu.edu**
+
+
+
+
 
 
 
@@ -464,3 +468,4 @@ For issues, questions, or contributions:
 <div align="center">
 Built with ❤️ using Dropwizard and Java
 </div>
+
