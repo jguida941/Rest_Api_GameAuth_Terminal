@@ -1,4 +1,4 @@
-# 🚀 GameAuth Next Steps Implementation Guide
+# GameAuth Next Steps Implementation Guide
 
 ## Immediate Priorities (This Week)
 
@@ -259,32 +259,32 @@ volumes:
 ## Implementation Order
 
 ### Week 1: Foundation
-1. ✅ Set up PostgreSQL with Docker
-2. ✅ Create database schema
-3. ✅ Implement JDBI DAOs
-4. ✅ Migrate existing users to database
-5. ✅ Add password hashing with bcrypt
+1. Set up PostgreSQL with Docker
+2. Create database schema
+3.  Implement JDBI DAOs
+4. Migrate existing users to database
+5. Add password hashing with bcrypt
 
 ### Week 2: Authentication
-1. ✅ Implement JWT token generation
-2. ✅ Create login endpoint returning JWT
-3. ✅ Add JWT validation filter
-4. ✅ Implement refresh token mechanism
-5. ✅ Update Postman collection with JWT auth
+1. Implement JWT token generation
+2. Create login endpoint returning JWT
+3. Add JWT validation filter
+4. Implement refresh token mechanism
+5. Update Postman collection with JWT auth
 
 ### Week 3: Real-Time Features
-1. ✅ Add WebSocket support
-2. ✅ Create chat room demo
-3. ✅ Implement presence system
-4. ✅ Add game state synchronization
-5. ✅ Create simple multiplayer demo
+1. Add WebSocket support
+2. Create chat room demo
+3. Implement presence system
+4. Add game state synchronization
+5. Create simple multiplayer demo
 
 ### Week 4: Frontend
-1. ✅ Set up React dashboard
-2. ✅ Create authentication flow
-3. ✅ Build server monitoring UI
-4. ✅ Add player management interface
-5. ✅ Deploy to GitHub Pages
+1. Set up React dashboard
+2. Create authentication flow
+3. Build server monitoring UI
+4. Add player management interface
+5. Deploy to GitHub Pages
 
 ## Testing Strategy
 
@@ -405,4 +405,5 @@ Histogram matchmakingDuration = Histogram.build()
 
 ---
 
-**Remember**: Focus on shipping working features incrementally. Each week should produce a deployable improvement that adds value to the platform.
+
+**Remember**: For anyone reading: it is important to focus on shipping working features incrementally. Each week should produce a deployable improvement that adds value to the platform. If you want ot contribute go for it!
