@@ -1,16 +1,16 @@
-# 🎮 GameAuth Platform Evolution Roadmap
+# GameAuth Platform Evolution Roadmap
 
-## 🚀 Vision Statement
+## Vision Statement
 Transform GameAuth from a REST API authentication service into a comprehensive, scalable gaming platform supporting real-time multiplayer experiences, advanced analytics, and modern game development workflows.
 
-## 📊 Current State
-- ✅ Basic REST API with authentication
-- ✅ Role-based access control (Admin, User, Player, Guest)
-- ✅ In-memory user database
-- ✅ Health monitoring endpoints
-- ✅ Beautiful terminal UI
+## Current State
+- Basic REST API with authentication
+- Role-based access control (Admin, User, Player, Guest)
+- In-memory user database
+- Health monitoring endpoints
+- Beautiful terminal UI
 
-## 🎯 Roadmap Phases
+## Roadmap Phases
 
 ### Phase 1: Enhanced Security & Modern Authentication (Q1 2025)
 
@@ -254,7 +254,7 @@ Transform GameAuth from a REST API authentication service into a comprehensive, 
 - 10k+ concurrent games
 - < 30s matchmaking time
 
-## 🎯 Next Steps
+## Next Steps
 
 1. **Immediate Actions** (Next Sprint)
    - Set up PostgreSQL database
@@ -274,7 +274,7 @@ Transform GameAuth from a REST API authentication service into a comprehensive, 
    - Release mobile application beta
    - Implement core game features
 
-## 🤝 Contribution Guidelines
+## Contribution Guidelines
 
 We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for:
 - Code style guidelines
@@ -282,14 +282,15 @@ We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for:
 - Testing requirements
 - Documentation standards
 
-## 📞 Contact
+## Contact
 
 For questions about the roadmap:
 - Open an issue on GitHub
 - Join our Discord server
-- Email: gameauth@example.com
+- Email: justinguida@snhu.edu
 
 ---
 
 **Last Updated**: July 2025
+
 **Version**: 1.0.0
