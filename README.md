@@ -6,11 +6,11 @@
 <br>
 **A secure, scalable REST API for game authentication and user management**
 
-**I am still building this. This is not a release, look at the roadmap if you'd like to contribute!**
+**Note: I am still building this. This is not a release, look at the roadmap if you'd like to contribute!**
 <br>
-**Still need to unit test completly but I have many projects I am working on!**
+**I Still need to unit test completly but I have many projects I am working on!**
 <br>
-**Any quesitons email me at justin.guida@snhu.edu**
+**If you have any quesitons feel free to email me at justin.guida@snhu.edu**
 
 
 
@@ -468,4 +468,5 @@ For issues, questions, or contributions:
 <div align="center">
 Built with ❤️ using Dropwizard and Java
 </div>
+
 
